@@ -140,9 +140,6 @@ function MatchResults() {
       <div className="container mx-auto max-w-7xl relative z-10">
         {/* Header Section */}
         <div className="text-center mb-10">
-          {/* <h2 className="text-5xl md:text-6xl font-extrabold text-gray-900 mb-6 tracking-tight">
-            Kết Quả Trận Đấu
-          </h2> */}
        <div className="text-center pt-8 border-t border-gray-200">
           <div className="inline-flex items-center space-x-3 bg-gray-50 border border-gray-200 rounded-lg px-6 py-3 shadow-sm">
             <Trophy className="w-5 h-5 text-gray-700" />
@@ -156,12 +153,13 @@ function MatchResults() {
           {matches.map((match, index) => (
             <div
               key={match.id}
-              className="group bg-white/95 backdrop-blur-sm border border-gray-200/50 rounded-2xl shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300 overflow-hidden"
+              onClick={() => openModal(match)}
+              className="group bg-white/95 backdrop-blur-sm border border-gray-200/50 rounded-2xl shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300 overflow-hidden cursor-pointer"
             >
               {/* Result Status Badge */}
               <div className={`h-1 bg-gradient-to-r ${getResultColor(match.result)}`}></div>
               
-              <div className="p-6">
+              <div className="p-6 flex flex-col justify-between h-[420px]">
                 {/* Date and Time */}
                 <div className="flex items-center justify-between mb-6">
                   <div className="flex items-center space-x-2 text-gray-500">
@@ -178,7 +176,7 @@ function MatchResults() {
                 <div className="flex items-center justify-between mb-6">
                   {/* Home Team */}
                   <div className="flex flex-col items-center space-y-3 flex-1">
-                    <div className="w-14 h-14 transition-transform duration-200">
+                    <div className="w-14 h-14 transition-transform duration-200 group-hover:scale-105">
                       <img
                         src={match.homeTeam.logo}
                         alt={match.homeTeam.name}
@@ -192,9 +190,6 @@ function MatchResults() {
 
                   {/* Score */}
                   <div className="flex flex-col items-center mx-6">
-                    {/* <div className={`inline-flex items-center justify-center w-10 h-10 bg-gradient-to-r ${getResultColor(match.result)} rounded-lg shadow-sm mb-2`}>
-                      {getResultIcon(match.result)}
-                    </div> */}
                     <div className="text-2xl font-bold text-gray-900 tracking-wide">
                       {match.score}
                     </div>
@@ -202,7 +197,7 @@ function MatchResults() {
 
                   {/* Away Team */}
                   <div className="flex flex-col items-center space-y-3 flex-1">
-                    <div className="w-14 h-14 transition-transform duration-200">
+                    <div className="w-14 h-14 transition-transform duration-200 group-hover:scale-105">
                       <img
                         src={match.awayTeam.logo}
                         alt={match.awayTeam.name}
@@ -232,59 +227,51 @@ function MatchResults() {
                   {match.title}
                 </h4>
 
-                {/* View Details Button */}
-                <button
-                  onClick={() => openModal(match)}
-                  className="w-full bg-gradient-to-r from-slate-800 to-gray-900 hover:from-slate-900 hover:to-black text-white font-semibold py-3 px-6 rounded-xl transition-all duration-200 flex items-center justify-center space-x-2 group/btn shadow-lg"
-                >
-                  <Eye className="w-4 h-4 group-hover/btn:scale-110 transition-transform" />
-                  <span>Xem Chi Tiết</span>
-                </button>
+                {/* Click to view indicator */}
+                <div className="text-center text-gray-500 group-hover:text-gray-700 transition-colors">
+                  <div className="flex items-center justify-center space-x-2">
+                    <Eye className="w-4 h-4 group-hover:scale-110 transition-transform" />
+                    <span className="text-sm font-medium">Click để xem chi tiết</span>
+                  </div>
+                </div>
               </div>
             </div>
           ))}
         </div>
-
-        {/* Footer Section */}
-    
       </div>
 
       {/* Modal */}
+     {/* Modal */}
       {isModalOpen && selectedMatch && (
         <div className="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 flex items-center justify-center p-4" onClick={closeModal}>
           <div 
-            className="bg-white rounded-2xl shadow-2xl max-w-4xl w-full max-h-[90vh] overflow-y-auto"
+            className="bg-white rounded-xl shadow-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto"
             onClick={(e) => e.stopPropagation()}
           >
-            {/* Modal Header */}
-            <div className="sticky top-0 bg-white border-b border-gray-200 p-6 rounded-t-2xl z-10">
+            {/* Modal Header - Minimalist */}
+            <div className="sticky top-0 bg-white border-b border-gray-100 px-6 py-4 rounded-t-xl z-10">
               <div className="flex items-center justify-between">
-                <div className="flex items-center space-x-4">
-                  <div className={`inline-flex items-center justify-center w-12 h-12 bg-gradient-to-r ${getResultColor(selectedMatch.result)} rounded-xl shadow-sm`}>
-                    {getResultIcon(selectedMatch.result)}
-                  </div>
-                  <div>
-                    <h3 className="text-2xl font-bold text-gray-900">{selectedMatch.title}</h3>
-                    <p className="text-gray-500 text-sm">{formatDate(selectedMatch.date)} • {selectedMatch.time}</p>
-                  </div>
+                <div>
+                  <h3 className="text-lg font-semibold text-gray-900">Featured Match</h3>
+                  <p className="text-gray-500 text-sm">{selectedMatch.league}</p>
                 </div>
                 <button
                   onClick={closeModal}
-                  className="p-2 hover:bg-gray-100 rounded-lg transition-colors"
+                  className="p-1 hover:bg-gray-100 rounded-lg transition-colors"
                 >
-                  <X className="w-6 h-6 text-gray-500" />
+                  <X className="w-5 h-5 text-gray-500" />
                 </button>
               </div>
             </div>
 
             {/* Modal Content */}
-            <div className="p-6 space-y-8">
-              {/* Teams and Score - Large Display */}
-              <div className="bg-gradient-to-br from-gray-50 to-slate-50 rounded-2xl p-8">
-                <div className="flex flex-col md:flex-row items-center justify-between">
+            <div className="px-6 py-8">
+              {/* Teams and Score - Clean Layout */}
+              <div className="text-center mb-8">
+                <div className="flex items-center justify-center space-x-8 mb-6">
                   {/* Home Team */}
-                  <div className="flex flex-col items-center space-y-4 flex-1">
-                    <div className="w-20 h-20 md:w-24 md:h-24 p-3">
+                  <div className="flex flex-col items-center space-y-3">
+                    <div className="w-16 h-16">
                       <img
                         src={selectedMatch.homeTeam.logo}
                         alt={selectedMatch.homeTeam.name}
@@ -292,26 +279,20 @@ function MatchResults() {
                       />
                     </div>
                     <div className="text-center">
-                      <h4 className="font-bold text-gray-900 text-lg md:text-xl">{selectedMatch.homeTeam.name}</h4>
-                      <p className="text-gray-500 text-sm">Chủ nhà</p>
+                      <h4 className="font-semibold text-gray-900 text-sm">{selectedMatch.homeTeam.name}</h4>
                     </div>
                   </div>
 
                   {/* Score */}
-                  <div className="flex flex-col items-center mx-8 my-6 md:my-0">
-                    <div className="text-4xl md:text-6xl font-bold text-gray-900 tracking-wide mb-2">
+                  <div className="flex flex-col items-center">
+                    <div className="text-5xl font-bold text-gray-900 mb-2">
                       {selectedMatch.score}
-                    </div>
-                    <div className={`inline-flex items-center px-4 py-2 bg-gradient-to-r ${getResultColor(selectedMatch.result)} rounded-lg`}>
-                      <span className="text-white font-semibold text-sm capitalize">
-                        {selectedMatch.result === 'win' ? 'Thắng' : selectedMatch.result === 'loss' ? 'Thua' : 'Hòa'}
-                      </span>
                     </div>
                   </div>
 
                   {/* Away Team */}
-                  <div className="flex flex-col items-center space-y-4 flex-1">
-                    <div className="w-20 h-20 md:w-24 md:h-24 p-3">
+                  <div className="flex flex-col items-center space-y-3">
+                    <div className="w-16 h-16">
                       <img
                         src={selectedMatch.awayTeam.logo}
                         alt={selectedMatch.awayTeam.name}
@@ -319,105 +300,100 @@ function MatchResults() {
                       />
                     </div>
                     <div className="text-center">
-                      <h4 className="font-bold text-gray-900 text-lg md:text-xl">{selectedMatch.awayTeam.name}</h4>
-                      <p className="text-gray-500 text-sm">Khách</p>
+                      <h4 className="font-semibold text-gray-900 text-sm">{selectedMatch.awayTeam.name}</h4>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Match Details */}
+                <div className="text-center text-gray-500 text-sm space-y-1">
+                  <p>Group stage • Group G • Matchday 2 of 3</p>
+                </div>
+              </div>
+
+              {/* Goal Scorers */}
+              <div className="mb-8">
+                <div className="flex justify-between items-start">
+                  {/* Home Team Goals */}
+                  <div className="flex-1">
+                    <div className="space-y-2">
+                      {selectedMatch.highlights.slice(0, 2).map((highlight, idx) => (
+                        <div key={idx} className="flex items-center space-x-2">
+                          <div className="w-2 h-2 bg-gray-900 rounded-full"></div>
+                          <span className="text-sm text-gray-700">{highlight}</span>
+                          <span className="text-sm text-green-600 font-medium">30'</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* Center divider */}
+                  <div className="w-px bg-gray-200 mx-6 h-16"></div>
+
+                  {/* Away Team Goals */}
+                  <div className="flex-1 text-right">
+                    <div className="space-y-2">
+                      {selectedMatch.highlights.slice(2, 3).map((highlight, idx) => (
+                        <div key={idx} className="flex items-center justify-end space-x-2">
+                          <span className="text-sm text-green-600 font-medium">25'</span>
+                          <span className="text-sm text-gray-700">{highlight}</span>
+                          <div className="w-2 h-2 bg-gray-900 rounded-full"></div>
+                        </div>
+                      ))}
                     </div>
                   </div>
                 </div>
               </div>
 
-              {/* Match Info */}
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <div className="bg-white border border-gray-200 rounded-xl p-4 text-center">
-                  <Star className="w-6 h-6 text-gray-600 mx-auto mb-2" />
-                  <p className="text-sm text-gray-500">Giải đấu</p>
-                  <p className="font-bold text-gray-900">{selectedMatch.league}</p>
-                </div>
-                <div className="bg-white border border-gray-200 rounded-xl p-4 text-center">
-                  <MapPin className="w-6 h-6 text-gray-600 mx-auto mb-2" />
-                  <p className="text-sm text-gray-500">Sân vận động</p>
-                  <p className="font-bold text-gray-900">{selectedMatch.stadium}</p>
-                </div>
-                <div className="bg-white border border-gray-200 rounded-xl p-4 text-center">
-                  <Users className="w-6 h-6 text-gray-600 mx-auto mb-2" />
-                  <p className="text-sm text-gray-500">Khán giả</p>
-                  <p className="font-bold text-gray-900">{selectedMatch.attendance}</p>
-                </div>
-              </div>
-
-              {/* Detailed Stats */}
-              <div className="bg-gradient-to-br from-slate-50 to-gray-50 rounded-2xl p-6">
-                <h5 className="text-xl font-bold text-gray-900 mb-6 text-center">Thống Kê Chi Tiết</h5>
+              {/* Match Statistics */}
+              <div className="bg-gray-50 rounded-lg p-6 mb-6">
+                <h5 className="text-center text-gray-700 font-medium mb-6">Thống kê trận đấu</h5>
                 
-                {/* Possession */}
-                <div className="mb-8">
-                  <div className="flex justify-between items-center mb-3">
-                    <span className="font-semibold text-gray-900 text-sm md:text-base">{selectedMatch.homeTeam.name}</span>
-                    <span className="text-sm text-gray-500 font-medium">Kiểm soát bóng</span>
-                    <span className="font-semibold text-gray-900 text-sm md:text-base">{selectedMatch.awayTeam.name}</span>
-                  </div>
-                  <div className="flex items-center space-x-4">
-                    <span className="text-xl md:text-2xl font-bold text-gray-900 w-12 text-center">{selectedMatch.homeTeam.stats.possession}%</span>
-                    <div className="flex-1 bg-gray-200 rounded-full h-3 overflow-hidden">
-                      <div 
-                        className="bg-gradient-to-r from-blue-500 to-blue-600 h-full rounded-full transition-all duration-1000" 
-                        style={{ width: `${selectedMatch.homeTeam.stats.possession}%` }}
-                      ></div>
+                {/* Stats Grid */}
+                <div className="space-y-6">
+                  {/* Possession */}
+                  <div>
+                    <div className="flex justify-between items-center mb-2">
+                      <span className="text-lg font-semibold text-gray-900">{selectedMatch.homeTeam.stats.possession}%</span>
+                      <span className="text-sm text-gray-500">Kiểm soát bóng</span>
+                      <span className="text-lg font-semibold text-gray-900">{selectedMatch.awayTeam.stats.possession}%</span>
                     </div>
-                    <span className="text-xl md:text-2xl font-bold text-gray-900 w-12 text-center">{selectedMatch.awayTeam.stats.possession}%</span>
-                  </div>
-                </div>
-
-                {/* Other Stats */}
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  <div className="bg-white rounded-xl p-4">
-                    <h6 className="font-semibold text-gray-700 mb-4 text-center">Cú sút</h6>
-                    <div className="flex justify-between items-center">
-                      <div className="text-center">
-                        <div className="text-2xl md:text-3xl font-bold text-gray-900">{selectedMatch.homeTeam.stats.shots}</div>
-                        <div className="text-xs text-gray-500">{selectedMatch.homeTeam.name}</div>
-                      </div>
-                      <div className="text-gray-400 font-bold">VS</div>
-                      <div className="text-center">
-                        <div className="text-2xl md:text-3xl font-bold text-gray-900">{selectedMatch.awayTeam.stats.shots}</div>
-                        <div className="text-xs text-gray-500">{selectedMatch.awayTeam.name}</div>
+                    <div className="flex items-center space-x-2">
+                      <div className="flex-1 bg-gray-200 rounded-full h-2">
+                        <div 
+                          className="bg-blue-500 h-2 rounded-full transition-all duration-1000" 
+                          style={{ width: `${selectedMatch.homeTeam.stats.possession}%` }}
+                        ></div>
                       </div>
                     </div>
                   </div>
 
-                  <div className="bg-white rounded-xl p-4">
-                    <h6 className="font-semibold text-gray-700 mb-4 text-center">Phạt góc</h6>
-                    <div className="flex justify-between items-center">
-                      <div className="text-center">
-                        <div className="text-2xl md:text-3xl font-bold text-gray-900">{selectedMatch.homeTeam.stats.corners}</div>
-                        <div className="text-xs text-gray-500">{selectedMatch.homeTeam.name}</div>
-                      </div>
-                      <div className="text-gray-400 font-bold">VS</div>
-                      <div className="text-center">
-                        <div className="text-2xl md:text-3xl font-bold text-gray-900">{selectedMatch.awayTeam.stats.corners}</div>
-                        <div className="text-xs text-gray-500">{selectedMatch.awayTeam.name}</div>
-                      </div>
+                  {/* Shots */}
+                  <div>
+                    <div className="flex justify-between items-center mb-2">
+                      <span className="text-lg font-semibold text-gray-900">{selectedMatch.homeTeam.stats.shots}</span>
+                      <span className="text-sm text-gray-500">Cú sút</span>
+                      <span className="text-lg font-semibold text-gray-900">{selectedMatch.awayTeam.stats.shots}</span>
+                    </div>
+                  </div>
+
+                  {/* Corners */}
+                  <div>
+                    <div className="flex justify-between items-center mb-2">
+                      <span className="text-lg font-semibold text-gray-900">{selectedMatch.homeTeam.stats.corners}</span>
+                      <span className="text-sm text-gray-500">Phạt góc</span>
+                      <span className="text-lg font-semibold text-gray-900">{selectedMatch.awayTeam.stats.corners}</span>
                     </div>
                   </div>
                 </div>
               </div>
 
-              {/* Highlights */}
-              <div className="bg-white border border-gray-200 rounded-2xl p-6">
-                <h5 className="text-xl font-bold text-gray-900 mb-6 flex items-center">
-                  <Trophy className="w-6 h-6 mr-2 text-yellow-500" />
-                  Điểm Nhấn Trận Đấu
-                </h5>
-                <div className="space-y-4">
-                  {selectedMatch.highlights.map((highlight, idx) => (
-                    <div key={idx} className="flex items-start space-x-4 p-4 bg-gradient-to-r from-gray-50 to-slate-50 rounded-xl">
-                      <div className="w-8 h-8 bg-gradient-to-r from-yellow-400 to-orange-500 rounded-full flex items-center justify-center flex-shrink-0">
-                        <span className="text-white font-bold text-sm">{idx + 1}</span>
-                      </div>
-                      <p className="text-gray-700 font-medium flex-1">{highlight}</p>
-                    </div>
-                  ))}
-                </div>
+              {/* Watch Live Button */}
+              <div className="text-center">
+                <button className="inline-flex items-center space-x-2 bg-blue-500 hover:bg-blue-600 text-white px-6 py-3 rounded-lg font-medium transition-colors">
+                  <Eye className="w-5 h-5" />
+                  <span>Watch live</span>
+                </button>
               </div>
             </div>
           </div>

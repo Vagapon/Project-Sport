@@ -1,12 +1,13 @@
 import React from "react";
 // import Hero from "../../components/homelayout/Hero";
 import MatchResults from "./MatchResults";
-// import LatestNews from "./TeamLogos";
-import PremierLeague from "./PremierLeague";
-import NextMatch from "./NextMatch";
-import GoalStats from "./GoalStats";
-import TopNews from "./TopNews";
-import SponsorBanner from "./SponsorBanner";
+// // import LatestNews from "./TeamLogos";
+// import PremierLeague from "./PremierLeague";
+// import NextMatch from "./NextMatch";
+// import GoalStats from "./GoalStats";
+// import TopNews from "./TopNews";
+// import SponsorBanner from "./SponsorBanner";
+import Contact from "./Contact";
 import Sponsors from "./Sponsors";
 // import Footer from "../../components/homelayout/Footer";
 import TeamLogos from "./TeamLogos";
@@ -19,6 +20,7 @@ function Home() {
       <MatchResults />
       <Sponsors />
       <TeamLogos />
+      <Contact/>
       <div className="container mx-auto px-4 py-8">
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           <div className="lg:col-span-2">

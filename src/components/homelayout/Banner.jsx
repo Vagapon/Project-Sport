@@ -6,6 +6,7 @@ import {
   MessageCircle,
   User,
   CreditCard,
+  Search,
 } from "lucide-react";
 
 const Banner = () => {
@@ -122,17 +123,17 @@ const Banner = () => {
       </button>
 
       {/* Slide Counter - Responsive */}
-      <div className="absolute left-2 sm:left-4 lg:left-8 bottom-4 sm:bottom-8 z-30 text-white text-2xl sm:text-3xl lg:text-4xl font-light">
+      {/* <div className="absolute left-2 sm:left-4 lg:left-8 bottom-4 sm:bottom-8 z-30 text-white text-2xl sm:text-3xl lg:text-4xl font-light">
         <span className="font-bold">0{currentSlide + 1}</span>
         <span className="opacity-50">/0{slides.length}</span>
-      </div>
-
+      </div> */}
+{/* 
       <div className="absolute right-2 sm:right-4 lg:right-8 bottom-4 sm:bottom-8 z-30 text-white text-2xl sm:text-3xl lg:text-4xl font-light">
         <span className="font-bold">
           0{((currentSlide + 1) % slides.length) + 1}
         </span>
         <span className="opacity-50">/0{slides.length}</span>
-      </div>
+      </div> */}
 
       {/* Indicators */}
       <div className="absolute bottom-16 sm:bottom-20 left-1/2 transform -translate-x-1/2 z-30 flex space-x-2 sm:space-x-3">
@@ -151,7 +152,7 @@ const Banner = () => {
 
       {/* Side Buttons - Hidden on mobile */}
       <div className="hidden lg:flex fixed right-0 top-1/2 transform -translate-y-1/2 z-40 flex-col space-y-1">
-        {[MessageCircle, User, CreditCard].map((Icon, i) => (
+        {[Search, User, CreditCard].map((Icon, i) => (
           <button
             key={i}
             className="bg-green-500 hover:bg-green-600 text-white p-4 transition-all duration-300 hover:scale-110"
