@@ -39,13 +39,13 @@ function MatchResults() {
       time: "19:45",
       title: "Trận Đấu Kinh Điển",
       homeTeam: {
-        name: "FC United",
-        logo: "https://ext.same-assets.com/2224353730/163332264.png",
+        name: "Manchester United",
+        logo: "https://upload.wikimedia.org/wikipedia/vi/a/a1/Man_Utd_FC_.svg",
         stats: { possession: 58, shots: 14, corners: 7 }
       },
       awayTeam: {
-        name: "Feyenoord",
-        logo: "https://ext.same-assets.com/2224353730/157028534.png",
+        name: "Manchester City",
+        logo: "https://upload.wikimedia.org/wikipedia/en/thumb/e/eb/Manchester_City_FC_badge.svg/1200px-Manchester_City_FC_badge.svg.png",
         stats: { possession: 42, shots: 11, corners: 4 }
       },
       score: "1 - 1",
@@ -62,13 +62,13 @@ function MatchResults() {
       time: "20:00",
       title: "Chiến Thắng Ấn Tượng",
       homeTeam: {
-        name: "FC United",
-        logo: "https://ext.same-assets.com/2224353730/163332264.png",
+        name: "Real Madrid",
+        logo: "https://upload.wikimedia.org/wikipedia/en/thumb/5/56/Real_Madrid_CF.svg/1200px-Real_Madrid_CF.svg.png",
         stats: { possession: 65, shots: 18, corners: 9 }
       },
       awayTeam: {
-        name: "FC Manchester",
-        logo: "https://ext.same-assets.com/2224353730/2642549229.png",
+        name: "FC Barcelona",
+        logo: "https://upload.wikimedia.org/wikipedia/vi/thumb/9/91/FC_Barcelona_logo.svg/2020px-FC_Barcelona_logo.svg.png",
         stats: { possession: 35, shots: 8, corners: 3 }
       },
       score: "3 - 1",
@@ -85,13 +85,13 @@ function MatchResults() {
       time: "21:30",
       title: "Trận Cầu Kịch Tính",
       homeTeam: {
-        name: "FC United",
-        logo: "https://ext.same-assets.com/2224353730/163332264.png",
+        name: "Portugal",
+        logo: "https://images.vexels.com/media/users/3/152592/isolated/preview/96d97eadc822aafbc7062c6646da0c47-portugal-football-team-logo.png",
         stats: { possession: 52, shots: 16, corners: 6 }
       },
       awayTeam: {
-        name: "FC Napoli",
-        logo: "https://ext.same-assets.com/2224353730/2877012948.png",
+        name: "Argentina",
+        logo: "https://upload.wikimedia.org/wikipedia/en/thumb/c/c1/Argentina_national_football_team_logo.svg/800px-Argentina_national_football_team_logo.svg.png",
         stats: { possession: 48, shots: 12, corners: 5 }
       },
       score: "2 - 3",
@@ -178,7 +178,7 @@ function MatchResults() {
                 <div className="flex items-center justify-between mb-6">
                   {/* Home Team */}
                   <div className="flex flex-col items-center space-y-3 flex-1">
-                    <div className="w-14 h-14 rounded-xl bg-gray-50 p-2 shadow-sm group-hover:scale-105 transition-transform duration-200">
+                    <div className="w-14 h-14 transition-transform duration-200">
                       <img
                         src={match.homeTeam.logo}
                         alt={match.homeTeam.name}
@@ -192,9 +192,9 @@ function MatchResults() {
 
                   {/* Score */}
                   <div className="flex flex-col items-center mx-6">
-                    <div className={`inline-flex items-center justify-center w-10 h-10 bg-gradient-to-r ${getResultColor(match.result)} rounded-lg shadow-sm mb-2`}>
+                    {/* <div className={`inline-flex items-center justify-center w-10 h-10 bg-gradient-to-r ${getResultColor(match.result)} rounded-lg shadow-sm mb-2`}>
                       {getResultIcon(match.result)}
-                    </div>
+                    </div> */}
                     <div className="text-2xl font-bold text-gray-900 tracking-wide">
                       {match.score}
                     </div>
@@ -202,7 +202,7 @@ function MatchResults() {
 
                   {/* Away Team */}
                   <div className="flex flex-col items-center space-y-3 flex-1">
-                    <div className="w-14 h-14 rounded-xl bg-gray-50 p-2 shadow-sm group-hover:scale-105 transition-transform duration-200">
+                    <div className="w-14 h-14 transition-transform duration-200">
                       <img
                         src={match.awayTeam.logo}
                         alt={match.awayTeam.name}
@@ -284,7 +284,7 @@ function MatchResults() {
                 <div className="flex flex-col md:flex-row items-center justify-between">
                   {/* Home Team */}
                   <div className="flex flex-col items-center space-y-4 flex-1">
-                    <div className="w-20 h-20 md:w-24 md:h-24 rounded-2xl bg-white p-3 shadow-lg">
+                    <div className="w-20 h-20 md:w-24 md:h-24 p-3">
                       <img
                         src={selectedMatch.homeTeam.logo}
                         alt={selectedMatch.homeTeam.name}
@@ -311,7 +311,7 @@ function MatchResults() {
 
                   {/* Away Team */}
                   <div className="flex flex-col items-center space-y-4 flex-1">
-                    <div className="w-20 h-20 md:w-24 md:h-24 rounded-2xl bg-white p-3 shadow-lg">
+                    <div className="w-20 h-20 md:w-24 md:h-24 p-3">
                       <img
                         src={selectedMatch.awayTeam.logo}
                         alt={selectedMatch.awayTeam.name}
