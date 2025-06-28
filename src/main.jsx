@@ -18,7 +18,7 @@ import Home from "./pages/HomePage/Home.jsx";
 import MyTeam from "./pages/MyTeam/TeamPage.jsx";
 import Blog from "./pages/Blogs/Blog.jsx"; // trang blog, nếu có
 import Challenge from "./pages/Challenges/Challenge.jsx";
-import Highlight from "./pages/Blogs/Highlight.jsx"
+import Highlight from "./pages/Blogs/HighLight.jsx"
 import Match from "./pages/Admin/Match.jsx"; // trang quản lý trận đấu
 import Register from "./pages/Ahthen/Register.jsx"; // trang đăng ký
 const rootElement = document.getElementById("root");

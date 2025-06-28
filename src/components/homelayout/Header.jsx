@@ -8,7 +8,7 @@ import {
   X,
   Home,
   Trophy,
-  ShoppingBag,
+  Sparkles,
   BookOpen,
   Bell,
 } from "lucide-react";
@@ -23,7 +23,7 @@ const Header = () => {
     { name: "My Team", icon: User, path: "/myteam" },
     { name: "Challange", icon: Trophy, path: "/challenge" },
     { name: "Blog", icon: BookOpen, path: "/blog" },
-    { name: "Shop", icon: ShoppingBag, path: "/highlight" },
+    { name: "Highlight", icon: Sparkles, path: "/highlight" },
   ];
 
   // Close menu when clicking outside

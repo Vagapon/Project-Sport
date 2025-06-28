@@ -23,17 +23,16 @@ function Home() {
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           <div className="lg:col-span-2">
             {/* <LatestNews /> */}
-            <TopNews />
+            {/* <TopNews /> */}
           </div>
           <div className="lg:col-span-1">
-            <PremierLeague />
+            {/* <PremierLeague />
             <NextMatch />
-            {/* <GoalStats /> */}
-            <SponsorBanner />
+            <SponsorBanner /> */}
           </div>
         </div>
       </div>
-      <GoalStats />
+      {/* <GoalStats /> */}
 {/* 
       <Footer /> */}
     </div>

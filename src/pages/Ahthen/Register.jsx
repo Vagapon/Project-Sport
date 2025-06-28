@@ -305,7 +305,7 @@ const videoRef = useRef();
           preload="auto"
           className="absolute inset-0 w-full h-full object-cover brightness-100 contrast-110"
         >
-          <source src="/video/worldcups.mp4" type="video/mp4" />
+          <source src="https://res.cloudinary.com/dlespzsu6/video/upload/v1751071400/worldcups_qdnpuw.mp4" type="video/mp4" />
         </video>
         <button
           onClick={handleToggleMute}

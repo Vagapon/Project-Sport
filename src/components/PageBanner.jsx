@@ -22,7 +22,7 @@ const PageBanner = ({ pathname }) => {
           title: "My Team",
           subtitle: "Quản lý đội bóng và thành viên của bạn",
           icon: Users,
-          gradient: "from-blue-600 via-indigo-700 to-purple-800",
+          gradient: "from-gray-600 via-gray-700 to-gray-800",
           bgImage: "https://i.ytimg.com/vi/3TLYL4NFzyE/maxresdefault.jpg",
         };
 
@@ -31,7 +31,7 @@ const PageBanner = ({ pathname }) => {
           title: "Challenge",
           subtitle: "Tham gia các giải đấu hấp dẫn",
           icon: Trophy,
-          gradient: "from-green-600 via-emerald-700 to-teal-800",
+          gradient: "from-gray-600 via-gray-700 to-gray-800",
           bgImage: "https://tuyetkiem.vn/wp-content/uploads/2023/04/9.jpg",
         };
 
@@ -41,7 +41,7 @@ const PageBanner = ({ pathname }) => {
           subtitle: "Tìm kiếm tin tức", // Thay đổi subtitle để phù hợp với search
           showSearch: true, // Flag để hiển thị search box
           icon: BookOpen,
-          gradient: "from-blue-900 via-blue-800 to-indigo-900",
+          gradient: "from-gray-600 via-gray-700 to-gray-800",
           bgImage:
             "https://kenh14cdn.com/203336854389633024/2024/5/9/photo-1-1715254733770814521774.jpg",
         };
@@ -52,20 +52,20 @@ const PageBanner = ({ pathname }) => {
           subtitle: "Cửa hàng thiết bị thể thao",
           description: "Mua sắm các sản phẩm thể thao chất lượng cao",
           icon: Target,
-          gradient: "from-orange-600 via-red-700 to-pink-800",
+          gradient: "from-gray-600 via-gray-700 to-gray-800",
           bgImage:
             "https://images.unsplash.com/photo-1556056504-5c7696c4c28d?w=1920&h=800&fit=crop",
         };
 
       default:
         return {
-          title: "Sport Event",
-          subtitle: "Nền tảng thể thao hàng đầu",
-          description: "Tham gia cộng đồng thể thao và thể hiện đam mê của bạn",
+          title: "High Light",
+          subtitle: "Những khoảnh khắc nổi bật",
+         
           icon: Trophy,
           gradient: "from-gray-600 via-gray-700 to-gray-800",
           bgImage:
-            "https://images.unsplash.com/photo-1431324155629-1a6deb1dec8d?w=1920&h=800&fit=crop",
+            "https://derivates.kicker.de/image/upload/c_crop%2Cx_276%2Cy_129%2Cw_3551%2Ch_1998/w_1000%2Cq_auto/v1/2022/06/03/617aa58e-7860-4611-ba9b-66f3d8912664.jpeg",
           stats: [],
         };
     }
